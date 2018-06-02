@@ -1,0 +1,29 @@
+id,Title,Description
+1,Architecture Design Bot,
+2,Design of conversation flow proposals,
+3,Architecture design and NLP API models,
+4,NPL API development,
+5,Frontend development of the chatbot,
+6,Email service,Sengrid integration
+7,Preparation of feedback system,
+8,Module of integration of learned conversations,
+9,Desarrollo de panel de preguntas y respuestas,
+10,Desarrollo de gestor de preguntas,
+12,Creation of QA environment,
+13,Jenkins Configuration,Configure Jenkins with Node JS
+14,Unit test,Unit test with JUNIT
+15,Fix errors,
+16,Read tag Info,Read NFC Info.
+17,Map Screen,Integrate Google maps autocomplete 
+18,Login,Login with facebook and email and password
+19,Login and Signup,"You can logi in only with Facebook, Twitter and Linkedin"
+20,Payments,Integrate Stripe SDK
+21,Payments Screen,"Receive Credit number, cvv and mm"
+22,Payments,Integrate Conekta SDK
+23,Responsive,Make About section responsive
+24,Loading dialog,Show loading whe the user make a request
+25,Map route,Show the google maps polylines
+26,Show restauran menu's,
+27,Regex for direction,
+28,Authentification token,
+29,Security Token,
