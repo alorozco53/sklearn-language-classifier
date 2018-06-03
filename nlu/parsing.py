@@ -20,20 +20,20 @@ class NLParser:
     """Wrapper class for all parsing algorithms.
     """
 
-    def __init__(self, intent_data=None, entity_data=None):
+    def __init__(self, intent_data, entity_data=None):
         """Intents and entities are encouraged to be provided
         in order to save memory in further computations.
-        Data can be passed as a CSV file, formatted according to the docs.
         """
-        if intent_data is not None:
-            if type(intent_data) == dict:
-                self.intents = pd.DataFrame(intent_data)
-            else:
-                self.intents = pd.read_csv(intent_data,
-                                           index_col='id',
-                                           encoding='utf-8')
-                self.intents = self.intents.fillna(value=NONE_VAL)
-            self._clean_intents()
+        if isinstance(intent_data, list):
+            self.intents = pd.DataFrame(intent_data)
+            self.intents = self.intents.set_index('id')
+        else:
+            self.intents = pd.read_csv(intent_data,
+                                       index_col='id',
+                                       encoding='utf-8')
+        self.intents = self.intents.fillna(value=NONE_VAL)
+        self._clean_intents()
+
 
     def _clean_intents(self):
         try:
@@ -43,13 +43,13 @@ class NLParser:
         print('Augmenting intent internal representation...')
 
         # downcase words
-        self.intents.Title = self.intents.Title.apply(lambda row: row.lower())
-        self.intents.Description = self.intents.Description.apply(lambda row: row.lower())
+        self.intents.title = self.intents.title.apply(lambda row: row.lower())
+        self.intents.description = self.intents.description.apply(lambda row: row.lower())
 
         # further cleaning
-        self.intents.Title = self.intents.Title.apply(lambda row: NON_WORDS.sub('', row))
-        self.intents.Description = self.intents.Description.apply(lambda row: NON_WORDS.sub('', row))
-        self.intents['train'] = self.intents.Title + ' ' + self.intents.Description
+        self.intents.title = self.intents.title.apply(lambda row: NON_WORDS.sub('', row))
+        self.intents.description = self.intents.description.apply(lambda row: NON_WORDS.sub('', row))
+        self.intents['train'] = self.intents.title + ' ' + self.intents.description
 
         print('DONE')
 
@@ -102,8 +102,8 @@ class NLParser:
         else:
             query_frame = data.copy()
         cleaned = query.lower()
-        new_row = pd.DataFrame({'Title': '',
-                                'Description': '',
+        new_row = pd.DataFrame({'title': '',
+                                'description': '',
                                 'train': cleaned},
                                index=['TBD'])
         query_frame = query_frame.append(new_row)

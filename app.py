@@ -21,7 +21,7 @@ def home():
     return 'Quiubo', 200
 
 @app.route('/', methods=['POST'])
-def webhook():
+def classify():
     """
     Endpoint for processing incoming messaging events
     """
@@ -43,6 +43,15 @@ def webhook():
     else:
         print('[WARNING] found no query!')
         return 'ERROR', 200
+
+@app.route('/update', methods=['POST'])
+def update():
+    global parser
+    data = request.get_json()
+    parser = NLParser(data)
+    return 'Successfully updated dataset!', 200
+
+
 
 
 if __name__ == '__main__':

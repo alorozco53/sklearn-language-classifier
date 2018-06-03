@@ -1,4 +1,4 @@
-id,Title,Description
+id,title,description
 1,Architecture Design Bot,
 2,Design of conversation flow proposals,
 3,Architecture design and NLP API models,
@@ -14,7 +14,7 @@ id,Title,Description
 14,Unit test,Unit test with JUNIT
 15,Fix errors,
 16,Read tag Info,Read NFC Info.
-17,Map Screen,Integrate Google maps autocomplete 
+17,Map Screen,Integrate Google maps autocomplete
 18,Login,Login with facebook and email and password
 19,Login and Signup,"You can logi in only with Facebook, Twitter and Linkedin"
 20,Payments,Integrate Stripe SDK
